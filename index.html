@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertebrados e Invertebrados | Doctor Christian and Nicolas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Definições de Variáveis CSS */
+        :root {
+            --cor-primaria: #0077b6;
+            --cor-secundaria: #00b4d8;
+            --cor-fundo: #f8f9fa;
+            --cor-texto: #343a40;
+            --cor-destaque: #90e0ef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+        }
+
+        /* Estrutura do Cabeçalho */
+        header {
+            background-color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--cor-primaria);
+            letter-spacing: 1px;
+        }
+
+        /* Estilos de Navegação (CORRIGIDO) */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--cor-primaria);
+            font-weight: 700;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+        }
+
+        /* Estilo da Seção da Capa */
+        .cover-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/1200/600/?category=scientific') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cover-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 4px solid var(--cor-destaque);
+            padding-bottom: 0.5rem;
+        }
+
+        .cover-section h4 {
+            font-weight: 300;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* Estilo do Conteúdo Principal */
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--cor-primaria);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .explanation p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: var(--cor-primaria);
+            font-weight: 700;
+        }
+
+        /* Grid de Imagens - 2 Cards */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 40px; 
+            margin: 3rem 0;
+            padding: 0 5%;
+        }
+
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Estilo para que o link envolva o card */
+        .image-grid a {
+            text-decoration: none; /* Remove sublinhado do link */
+            color: inherit;
+            display: block;
+        }
+
+        .image-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Sombra mais intensa ao passar o mouse */
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-card p {
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            background-color: var(--cor-destaque);
+            color: var(--cor-primaria);
+        }
+
+        /* Estilo da seção que substitui o botão grande */
+        .navigation-message {
+            text-align: center;
+            margin: 2rem 0 4rem 0;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--cor-secundaria);
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: var(--cor-texto);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h2>Doctor Christian and Nicolas</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="vertebrados.html">Vertebrados</a></li>
+                <li><a href="invertebrados.html">Invertebrados</a></li>
+            </ul>
+        </nav>
+        </header>
+
+    <section class="cover-section">
+        <h1>Vertebrados e Invertebrados</h1>
+        <h4>Venha conhecer este mundo incrível e maravilhoso através da Zoologia Moderna</h4>
+    </section>
+
+    <section class="content-section">
+        <h3>A Divisão Fundamental do Reino Animal</h3>
+
+        <div class="explanation">
+            <p>A classificação do Reino Animalia se baseia primariamente na presença ou ausência de uma estrutura axial central: a **Coluna Vertebral**. Esta distinção, embora pareça simples, separa o reino em dois supergrupos com complexidades biológicas e evolutivas radicalmente diferentes. É uma dicotomia essencial para a compreensão da biologia animal.</p>
+
+            <p>Os **Vertebrados** possuem um esqueleto interno (endosqueleto) que fornece suporte estrutural e proteção ao sistema nervoso central. Já os **Invertebrados**, que compõem a vasta maioria da vida animal, dependem de outros mecanismos de suporte, como exoesqueletos ou sustentação hidrostática, demonstrando uma diversidade morfológica e adaptativa muito maior.</p>
+        </div>
+
+        <div class="image-grid">
+            
+            <a href="vertebrados.html">
+                <div class="image-card">
+                    <img src="https://picsum.photos/seed/vertebrados/450/300" alt="Vertebrado: Representante do grupo">
+                    <p>🦁 Explorar Vertebrados: Esqueleto Interno e Coluna Vertebral</p>
+                </div>
+            </a>
+            
+            <a href="invertebrados.html">
+                <div class="image-card">
+                    <img src="https://picsum.photos/seed/invertebrados/450/300" alt="Invertebrado: Representante do grupo">
+                    <p>🐙 Explorar Invertebrados: Ausência de Coluna e Enorme Diversidade</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="navigation-message">
+            <p>Clique em uma das opções acima para aceder à explicação científica completa de cada grupo.</p>
+        </div>
+
+        <div class="explanation">
+            <p>A dominância ecológica dos **Vertebrados** em muitos ecossistemas é inegável (mamíferos, aves, peixes), mas a verdadeira biomassa e o número de espécies pertencem aos **Invertebrados** (insetos, moluscos, crustáceos). Estudar esta divisão é mergulhar na história evolutiva e nas soluções encontradas pela vida para colonizar o planeta.</p>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Doctor Christian and Nicolas | Zoologia Moderna</p>
+    </footer>
+
+</body>
+</html>
