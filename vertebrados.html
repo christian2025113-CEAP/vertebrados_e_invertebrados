@@ -6,7 +6,6 @@
     <title>Vertebrados | Explicação Detalhada - Doctor Christian and Nicolas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* Manter o mesmo CSS da página principal para consistência */
         :root {
             --cor-primaria: #0077b6;
             --cor-secundaria: #00b4d8;
@@ -44,7 +43,6 @@
             letter-spacing: 1px;
         }
         
-        /* Estilos de Navegação (CORRIGIDO) */
         nav ul {
             list-style: none;
             display: flex;
@@ -94,7 +92,7 @@
             text-align: justify;
         }
 
-        .section-text strong {
+        .section-text strong, b {
             color: var(--cor-primaria);
             font-weight: 700;
         }
@@ -119,17 +117,22 @@
         }
 
         .image-container img {
-            max-width: 100%;
+            width: 70%; /* Reduzido de 100% para 70% */
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
-        
-        /* Botão de Retorno */
+
+        .image-container img:hover {
+            transform: scale(1.03);
+        }
+
         .back-link {
             text-align: center;
             margin: 4rem 0;
         }
+
         .back-link a {
             color: var(--cor-primaria);
             text-decoration: none;
@@ -139,6 +142,7 @@
             border-radius: 50px;
             transition: background-color 0.3s, color 0.3s;
         }
+
         .back-link a:hover {
             background-color: var(--cor-primaria);
             color: white;
@@ -167,7 +171,7 @@
                 <li><a href="invertebrados.html">Invertebrados</a></li>
             </ul>
         </nav>
-        </header>
+    </header>
 
     <section class="content-section">
         <center>
@@ -175,7 +179,7 @@
         </center>
         
         <div class="section-text">
-            <p>Os **Vertebrados** (Subfilo Vertebrata) representam o grupo animal mais complexo e evolutivamente avançado, compreendendo cerca de 69.000 espécies. Eles são definidos pela presença de uma **coluna vertebral** (formada por vértebras) e um **crânio**, estruturas que protegem o sistema nervoso central. Esta característica permitiu a evolução de organismos de grande porte e com sofisticadas capacidades sensoriais e motoras.</p>
+            <p>Os <b>Vertebrados</b> (Subfilo Vertebrata) representam o grupo animal mais complexo e evolutivamente avançado, compreendendo cerca de 69.000 espécies. Eles são definidos pela presença de uma <b>coluna vertebral</b> (formada por vértebras) e um <b>crânio</b>, estruturas que protegem o sistema nervoso central. Esta característica permitiu a evolução de organismos de grande porte e com sofisticadas capacidades sensoriais e motoras.</p>
             
             <p>A evolução do endosqueleto ósseo ou cartilaginoso permitiu que os vertebrados crescessem continuamente e desenvolvessem eficientes estratégias de locomoção e predação, o que os levou a dominar ambientes terrestres, aquáticos e aéreos. O grupo inclui classes essenciais como Peixes, Anfíbios, Répteis, Aves e Mamíferos.</p>
             
@@ -183,33 +187,45 @@
             <hr>
             
             <ul class="key-points">
-                <li>**Endosqueleto Interno:** Esqueleto de suporte que cresce com o organismo, em oposição ao exoesqueleto dos Artrópodes.</li>
-                <li>**Sistema Nervoso Avançado:** Cérebro altamente desenvolvido, protegido pelo crânio, e medula espinhal protegida pela coluna vertebral.</li>
-                <li>**Sistema Circulatório Fechado:** O sangue circula inteiramente dentro de vasos, garantindo transporte eficiente de oxigénio e nutrientes.</li>
-                <li>**Simetria Bilateral:** Corpo bem definido com duas metades espelhadas.</li>
+                <li><b>Endosqueleto Interno:</b> Esqueleto de suporte que cresce com o organismo, em oposição ao exoesqueleto dos Artrópodes.</li>
+                <li><b>Sistema Nervoso Avançado:</b> Cérebro altamente desenvolvido, protegido pelo crânio, e medula espinhal protegida pela coluna vertebral.</li>
+                <li><b>Sistema Circulatório Fechado:</b> O sangue circula inteiramente dentro de vasos, garantindo transporte eficiente de oxigênio e nutrientes.</li>
+                <li><b>Simetria Bilateral:</b> Corpo bem definido com duas metades espelhadas.</li>
             </ul>
 
             <h3>As Cinco Classes Clássicas</h3>
             <hr>
 
             <h4>1. Peixes (Pisces)</h4>
-            <p>O grupo mais diverso de vertebrados. Caracterizados pela respiração **branquial**, corpo coberto por escamas (na maioria) e utilização de **nadadeiras** para locomoção. O estudo dos peixes é fundamental para a compreensão da origem da coluna vertebral. 
+            <p>O grupo mais diverso de vertebrados. Caracterizados pela respiração <b>branquial</b>, corpo coberto por escamas (na maioria) e utilização de <b>nadadeiras</b> para locomoção. O estudo dos peixes é fundamental para a compreensão da origem da coluna vertebral.</p>
 
-[Image of diverse fish species]
-</p>
+            <div class="image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Coral_reef_fish.jpg" alt="Peixes - Vertebrados aquáticos com respiração branquial">
+                <p style="font-style: italic; margin-top: 10px;">Diversidade de Peixes: respiram por brânquias e vivem em ambientes aquáticos.</p>
+            </div>
 
             <h4>2. Anfíbios (Amphibia)</h4>
             <p>Animais de vida dupla (aquática e terrestre). Passam por metamorfose, com larvas aquáticas (girinos) e adultos terrestres. Sua pele permeável os torna altamente sensíveis às mudanças ambientais e são indicadores da saúde ecológica.</p>
 
+            <div class="image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/European_tree_frog_%28Hyla_arborea%29_cropped.jpg" alt="Anfíbio - Rã arborícola">
+                <p style="font-style: italic; margin-top: 10px;">Anfíbio: Rã arborícola, exemplo clássico de vida dupla (aquática e terrestre).</p>
+            </div>
+
             <h4>3. Répteis (Reptilia) e Aves (Aves)</h4>
-            <p>Os Répteis (cobras, lagartos, tartarugas) foram os primeiros a conquistar definitivamente o ambiente terrestre, graças ao seu **ovo amniótico** e pele queratinizada. As **Aves** são os únicos animais com **penas**, caracterizadas pela endotermia (sangue quente) e ossos pneumáticos (ocos) que facilitam o voo.</p>
+            <p>Os Répteis (cobras, lagartos, tartarugas) foram os primeiros a conquistar definitivamente o ambiente terrestre, graças ao seu <b>ovo amniótico</b> e pele queratinizada. As <b>Aves</b> são os únicos animais com <b>penas</b>, caracterizadas pela endotermia (sangue quente) e ossos pneumáticos (ocos) que facilitam o voo.</p>
+
+            <div class="image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/American_robin.jpg" alt="Ave - Pássaro robin americano">
+                <p style="font-style: italic; margin-top: 10px;">Exemplo de Aves: Robin americano, símbolo da evolução do voo.</p>
+            </div>
             
             <h4>4. Mamíferos (Mammalia)</h4>
-            <p>O grupo que inclui os seres humanos. Caracterizado pela presença de **glândulas mamárias** (para alimentar os filhotes), **pelos** ou **cabelos** e, na maioria, pela endotermia. Possuem o cérebro mais complexo e estruturas sociais avançadas.</p>
+            <p>O grupo que inclui os seres humanos. Caracterizado pela presença de <b>glândulas mamárias</b> (para alimentar os filhotes), <b>pelos</b> ou <b>cabelos</b> e, na maioria, pela endotermia. Possuem o cérebro mais complexo e estruturas sociais avançadas.</p>
             
             <div class="image-container">
-                <img src="https://picsum.photos/seed/vertebras/800/400" alt="Exemplo de Vertebrado de alta complexidade: Um mamífero">
-                <p style="font-style: italic; margin-top: 10px;">Exemplo de Vertebrado: O elefante (Filo Chordata, Classe Mammalia).</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/African_Bush_Elephant.jpg" alt="Mamífero - Elefante africano">
+                <p style="font-style: italic; margin-top: 10px;">Exemplo de Mamífero: Elefante africano (Classe Mammalia).</p>
             </div>
 
             <h3>A Coluna Vertebral: A Chave da Predação</h3>
