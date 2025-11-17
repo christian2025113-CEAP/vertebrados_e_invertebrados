@@ -3,228 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invertebrados | Explicação Detalhada - Doctor Christian and Nicolas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Tratado sobre Invertebrados | Dr. Christian & Nicolas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
     <style>
-        /* Manter o mesmo CSS da página principal para consistência */
         :root {
-            --cor-primaria: #0077b6;
-            --cor-secundaria: #00b4d8;
-            --cor-fundo: #f8f9fa;
-            --cor-texto: #343a40;
-            --cor-destaque: #90e0ef;
+            --cor-ciano: #00f2ff;
+            --cor-ciano-escuro: #004e52;
+            --cor-fundo: #02050a;
+            --cor-texto: #c7dbe6;
+            --vidro-fundo: rgba(2, 12, 20, 0.85);
+            --mouse-x: 50%;
+            --mouse-y: 50%;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--cor-texto);
+            font-family: 'Lato', sans-serif;
             background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.9;
+            overflow-x: hidden;
+        }
+
+        /* Efeitos de Fundo Subaquático */
+        .deep-sea-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top, #0b1a26 0%, #000000 100%);
+            z-index: -3;
+        }
+
+        .bioluminescence {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: pulse 10s infinite alternate;
+            opacity: 0.4;
+            z-index: -2;
+        }
+
+        /* Lanterna Azulada */
+        .spotlight-blue {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(
+                600px circle at var(--mouse-x) var(--mouse-y), 
+                rgba(0, 242, 255, 0.15), 
+                transparent 50%
+            );
+            z-index: -1;
+            pointer-events: none;
+            mix-blend-mode: screen;
         }
 
         header {
-            background-color: white;
+            background: rgba(0,0,0,0.9);
             padding: 1rem 5%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-bottom: 1px solid var(--cor-ciano-escuro);
+            display: flex; justify-content: space-between; align-items: center;
         }
 
         .logo h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--cor-primaria);
-            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--cor-ciano);
         }
         
-        /* Estilos de Navegação (CORRIGIDO) */
-        nav ul {
-            list-style: none;
+        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--cor-ciano); }
+
+        /* Header da Página */
+        .page-intro {
+            position: relative;
+            height: 70vh;
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?jellyfish,deep-sea,bioluminescence') no-repeat center center/cover;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--cor-primaria);
-            font-weight: 700;
-            padding: 5px 10px;
-            transition: color 0.3s;
+        .page-intro::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #02050a);
         }
 
-        nav ul li a:hover {
-            color: var(--cor-secundaria);
-            border-bottom: 2px solid var(--cor-secundaria);
+        .intro-content { position: relative; z-index: 2; padding: 0 20px; }
+
+        .intro-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: #fff;
+            text-shadow: 0 0 20px var(--cor-ciano);
+            margin-bottom: 10px;
         }
 
-        .content-section {
+        .intro-content p {
+            font-family: 'Space Mono', monospace;
+            color: var(--cor-ciano);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Conteúdo Principal */
+        .main-container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem 5%;
+            padding: 4rem 2rem;
         }
 
-        h1 {
+        .scientific-card {
+            background: var(--vidro-fundo);
+            border-left: 4px solid var(--cor-ciano);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scientific-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--cor-ciano), transparent);
+        }
+
+        h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--cor-primaria);
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 3px solid var(--cor-destaque);
-            padding-bottom: 0.5rem;
-        }
-
-        h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--cor-secundaria);
-            font-size: 1.8rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-text p {
+            font-size: 2.5rem;
+            color: #fff;
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+        }
+
+        .scientific-card p {
+            margin-bottom: 1.5rem;
             text-align: justify;
+            font-size: 1.1rem;
         }
 
-        .section-text strong {
-            color: var(--cor-primaria);
-            font-weight: 700;
+        .highlight { color: var(--cor-ciano); font-weight: bold; }
+
+        /* Seção de Dados Detalhados */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 2rem;
         }
 
-        .key-points {
-            list-style-type: none;
-            padding-left: 0;
-            margin-bottom: 2rem;
+        .detail-box {
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
         }
 
-        .key-points li {
-            background: #e9f5ff;
-            margin-bottom: 8px;
-            padding: 10px 15px;
-            border-left: 4px solid var(--cor-secundaria);
+        .detail-box:hover {
+            border-color: var(--cor-ciano);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .detail-box h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-family: 'Space Mono', monospace;
             font-size: 1rem;
         }
 
-        .image-container {
+        /* Imagem com Legenda */
+        .figure-container {
             text-align: center;
-            margin: 2rem 0;
+            margin: 3rem 0;
         }
 
-        .image-container img {
+        .figure-container img {
             max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        /* Botão de Retorno */
-        .back-link {
-            text-align: center;
-            margin: 4rem 0;
-        }
-        .back-link a {
-            color: var(--cor-primaria);
-            text-decoration: none;
-            font-weight: 700;
-            padding: 10px 20px;
-            border: 2px solid var(--cor-primaria);
-            border-radius: 50px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .back-link a:hover {
-            background-color: var(--cor-primaria);
-            color: white;
+            border-radius: 2px;
+            border: 1px solid #333;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            transition: transform 0.5s;
         }
 
-        footer {
-            background-color: var(--cor-texto);
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            font-size: 0.9rem;
-            margin-top: 3rem;
+        .figure-container img:hover { transform: scale(1.02); }
+
+        .caption {
+            font-size: 0.9rem; color: #888; font-style: italic; margin-top: 10px; display: block;
+        }
+
+        .btn-return {
+            display: inline-block; margin-top: 2rem; padding: 15px 40px;
+            border: 1px solid var(--cor-ciano); color: var(--cor-ciano);
+            text-decoration: none; font-family: 'Space Mono', monospace;
+            transition: 0.4s; background: transparent;
+        }
+        .btn-return:hover { background: var(--cor-ciano); color: #000; box-shadow: 0 0 20px var(--cor-ciano); }
+
+        footer { text-align: center; padding: 3rem; color: #555; font-size: 0.8rem; margin-top: 5rem; }
+
+        @keyframes pulse { 0% { opacity: 0.3; } 100% { opacity: 0.6; } }
+        
+        @media(max-width: 768px) {
+            .intro-content h1 { font-size: 3rem; }
+            .details-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <div class="deep-sea-bg"></div>
+    <div class="bioluminescence"></div>
+    <div class="spotlight-blue"></div>
+
     <header>
         <div class="logo">
-            <h2>Doctor Christian and Nicolas</h2>
+            <h2>Dr. Christian & Nicolas</h2>
         </div>
         <nav>
-            <ul>
-                <li><a href="index.html">🏠 Home</a></li>
-                <li><a href="vertebrados.html">Vertebrados</a></li>
-                <li><a href="invertebrados.html">Invertebrados</a></li>
-            </ul>
+            <a href="index.html">HOME</a>
+            <a href="vertebrados.html">VERTEBRADOS</a>
         </nav>
-        </header>
+    </header>
 
-    <section class="content-section">
-        <center>
-            <h1>Invertebrados: A Mega-Diversidade do Reino Animalia</h1>
-        </center>
-        
-        <div class="section-text">
-            <p>Os **Invertebrados** representam o grupo animal mais vasto e diversificado do planeta, abrangendo mais de **95% de todas as espécies** conhecidas. Este grupo não é uma classificação taxonômica coesa (um clado), mas sim uma categorização informal baseada na **ausência de coluna vertebral** e de um endosqueleto ósseo ou cartilaginoso. 
-
-[Image of diverse invertebrate organisms chart]
-</p>
-            
-            <p>A história evolutiva dos invertebrados remonta há centenas de milhões de anos, sendo os primeiros animais a povoar a Terra. Sua diversidade morfológica e fisiológica é monumental, permitindo-lhes colonizar virtualmente todos os nichos ecológicos, desde as profundezas oceânicas até os ambientes terrestres mais secos.</p>
-            
-            <h3>Características Morfológicas e Estruturais</h3>
-            <hr>
-            
-            <ul class="key-points">
-                <li>**Suporte Estrutural Variável:** Utilizam diversos meios de suporte: o **exoesqueleto quitinoso** (Artrópodes); **conchas calcárias** (Moluscos); ou a **pressão hidrostática** (Cnidários e Anelídeos).</li>
-                <li>**Simetria Diversificada:** Apresentam desde **assimetria** (Poríferos), **simetria radial** (Cnidários e Equinodermos) até **simetria bilateral** (Artrópodes, Platelmintos, Moluscos).</li>
-                <li>**Organização Celular:** Variam de organismos com apenas células (Poríferos) a organismos com órgãos e sistemas complexos.</li>
-            </ul>
-
-            <h3>Os Filos Mais Representativos e Suas Estratégias de Vida</h3>
-            <hr>
-
-            <h4>1. Filo Arthropoda (Os Dominantes)</h4>
-            <p>Este é, de longe, o maior filo do planeta, caracterizado por: **exoesqueleto rígido**, **corpo segmentado** e **apêndices articulados**. Seu sucesso deve-se à incrível capacidade de adaptação e diversidade de nichos, sendo cruciais para a polinização e cadeias alimentares. </p>
-
-            <h4>2. Filo Mollusca (Corpos Moles)</h4>
-            <p>Inclui caracóis, ostras e os altamente inteligentes polvos e lulas. Caracterizam-se por um **corpo mole**, frequentemente protegido por uma **concha**, e um órgão muscular especializado chamado **pé**. Os cefalópodes são notáveis por possuírem o sistema nervoso mais complexo entre todos os invertebrados.</p>
-
-            <h4>3. Filo Annelida (Corpos Segmentados)</h4>
-            <p>Representado pelas minhocas e sanguessugas. Seu corpo é dividido em **segmentos** (anéis), vitais para o movimento e a **aeração e fertilidade do solo**.</p>
-            
-            <h4>4. Filos Cnidaria e Porifera (Os Primórdios)</h4>
-            <p>As formas mais antigas de vida animal multicelular. Os **Poríferos** (Esponjas) são sésseis, sem tecidos. Os **Cnidários** (Águas-vivas, Corais) possuem simetria radial e células urticantes (cnidócitos).</p>
-            
-            <div class="image-container">
-                <img src="https://picsum.photos/seed/polvo/800/400" alt="Polvo: Invertebrado com sistema nervoso complexo">
-                <p style="font-style: italic; margin-top: 10px;">Exemplo de Invertebrado de alta complexidade: O polvo (Filo Mollusca).</p>
-            </div>
-
-            <h3>Importância Ecológica e Econômica</h3>
-            <hr>
-            <p>Os invertebrados são a espinha dorsal de quase todos os ecossistemas. Eles atuam como **decompositores**, **polinizadores**, **fontes primárias de alimento** (plâncton, krill) e como **filtros naturais**, sendo fundamentais para a saúde ambiental.</p>
-
-        </div>
-
-        <div class="back-link">
-            <a href="index.html">⬅️ Voltar à Página Principal</a>
+    <section class="page-intro">
+        <div class="intro-content">
+            <h1>Invertebrados</h1>
+            <p>Análise Taxonômica e Fisiológica</p>
         </div>
     </section>
 
+    <div class="main-container">
+        
+        <div class="scientific-card">
+            <h2>A Vasta Maioria da Vida</h2>
+            <p>Ao nos referirmos aos Invertebrados, estamos falando de uma categoria que engloba impressionantes <strong>97% de toda a biodiversidade animal conhecida</strong>. Este grupo não é um clado monofilético (não descendem todos de um único ancestral exclusivo que exclui vertebrados), mas sim um termo parafilético definido por exclusão: são todos os animais que carecem de crânio e coluna vertebral.</p>
+            <p>A evolução dos invertebrados antecede a dos vertebrados em centenas de milhões de anos. Fósseis da Fauna de Ediacara sugerem organismos de corpo mole há 600 milhões de anos, estabelecendo as bases genéticas para a vida multicelular complexa.</p>
+        </div>
+
+        <div class="figure-container">
+            <img src="https://source.unsplash.com/1200x600/?coral,reef,macro" alt="Biodiversidade Invertebrada">
+            <span class="caption">Fig 1. A complexidade dos ecossistemas de recifes de coral, construídos inteiramente por invertebrados (Cnidários).</span>
+        </div>
+
+        <div class="scientific-card">
+            <h2>Engenharia Biológica: Suporte sem Ossos</h2>
+            <p>A ausência de um endoesqueleto ósseo não limitou o sucesso destes animais; pelo contrário, impulsionou uma diversificação morfológica sem paralelos na natureza. A evolução testou e aprimorou três arquiteturas principais:</p>
+            
+            <div class="details-grid">
+                <div class="detail-box">
+                    <h4>1. O Exoesqueleto</h4>
+                    <p>Presente nos Artrópodes. Uma cutícula rígida de quitina e proteínas que envolve o corpo. Oferece proteção blindada contra predadores e evita a desidratação, permitindo a colonização da terra firme. O custo: o animal deve realizar a muda (ecdise) para crescer, ficando vulnerável temporariamente.</p>
+                </div>
+                <div class="detail-box">
+                    <h4>2. O Esqueleto Hidrostático</h4>
+                    <p>Visto em anelídeos, moluscos e cnidários. Funciona com base na física dos fluidos. O animal comprime fluidos internos com músculos circulares e longitudinais. Como a água é incompressível, a pressão gera rigidez e movimento, similar a uma mangueira cheia de água.</p>
+                </div>
+                <div class="detail-box">
+                    <h4>3. Biomineralização</h4>
+                    <p>Moluscos e corais secretam carbonato de cálcio para criar conchas e estruturas externas. Diferente do exoesqueleto, a concha cresce com o animal (acreção) e não precisa ser trocada, oferecendo um refúgio permanente.</p>
+                </div>
+                <div class="detail-box">
+                    <h4>4. Inteligência Descentralizada</h4>
+                    <p>Nos cefalópodes (polvos), a inteligência não está apenas no cérebro. Dois terços dos neurônios estão nos tentáculos, permitindo que cada braço "pense" e sinta de forma semi-independente, um modelo de computação distribuída biológica.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scientific-card">
+            <h2>O Pilar dos Ecossistemas</h2>
+            <p>A vida na Terra entraria em colapso total em questão de meses sem os invertebrados. Eles desempenham funções insubstituíveis:</p>
+            <p><span class="highlight">Polinização:</span> Insetos (Hymenoptera, Lepidoptera) são responsáveis pela reprodução da maioria das plantas com flores (Angiospermas), sustentando a base da agricultura global.</p>
+            <p><span class="highlight">Ciclagem de Nutrientes:</span> Detritívoros como minhocas e besouros convertem matéria morta em nutrientes essenciais (nitrogênio, fósforo) que as plantas podem absorver, fechando o ciclo da vida.</p>
+            <p><span class="highlight">Base da Cadeia Trófica:</span> Nos oceanos, o zooplâncton (krill, larvas de crustáceos) converte a energia das algas em proteína animal, alimentando desde pequenos peixes até as gigantescas baleias-azuis.</p>
+        </div>
+
+        <center>
+            <a href="index.html" class="btn-return">← VOLTAR À BASE</a>
+        </center>
+    </div>
+
     <footer>
-        <p>&copy; 2025 Doctor Christian and Nicolas | Zoologia Moderna</p>
+        <p>&copy; 2025 Doctor Christian and Nicolas | Departamento de Biologia Marinha e Evolutiva</p>
     </footer>
 
+    <script>
+        // Script para controlar a luz do mouse
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            document.documentElement.style.setProperty('--mouse-x', x + 'px');
+            document.documentElement.style.setProperty('--mouse-y', y + 'px');
+        });
+    </script>
 </body>
 </html>
