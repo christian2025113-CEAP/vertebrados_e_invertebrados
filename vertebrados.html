@@ -3,245 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertebrados | Explicação Detalhada - Doctor Christian and Nicolas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Vertebrados | Dr. Christian & Nicolas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cor-primaria: #0077b6;
-            --cor-secundaria: #00b4d8;
-            --cor-fundo: #f8f9fa;
-            --cor-texto: #343a40;
-            --cor-destaque: #90e0ef;
+            --cor-ouro: #ffc107; /* Âmbar Dourado */
+            --cor-ouro-escuro: #b38600;
+            --cor-fundo: #050200; /* Fundo quase preto com tom quente */
+            --cor-texto: #e6e6e6;
+            --vidro-fundo: rgba(10, 5, 0, 0.85);
+            --borda-vidro: rgba(255, 193, 7, 0.15);
+            --mouse-x: 50%;
+            --mouse-y: 50%;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--cor-texto);
             background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.9;
+            overflow-x: hidden;
         }
 
+        /* --- EFEITOS VISUAIS DE FUNDO --- */
+        .bg-image {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Imagem de textura de pele de réptil/escamas escuras para o fundo */
+            background: url('https://images.unsplash.com/photo-1534251623169-2a89b1218f9b?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            filter: brightness(0.25) sepia(0.5) hue-rotate(-10deg);
+            z-index: -3;
+            transform: scale(1.05);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            z-index: -2;
+            animation: floatParticles 80s linear infinite;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        @keyframes floatParticles {
+            from { background-position: 0 0; }
+            to { background-position: 0 -1000px; }
+        }
+
+        /* Iluminação Dinâmica Dourada */
+        .spotlight {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(
+                circle 700px at var(--mouse-x) var(--mouse-y), 
+                rgba(255, 193, 7, 0.12),
+                transparent 45%
+            );
+            z-index: -1;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        /* --- HEADER --- */
         header {
-            background-color: white;
-            padding: 1rem 5%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 1.5rem 5%;
+            background: rgba(0, 0, 0, 0.7);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--borda-vidro);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .logo h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--cor-primaria);
-            letter-spacing: 1px;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
+            font-family: 'Cinzel', serif;
+            color: var(--cor-ouro);
+            font-size: 1.6rem;
+            text-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
         }
 
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        
         nav ul li a {
             text-decoration: none;
-            color: var(--cor-primaria);
-            font-weight: 700;
-            padding: 5px 10px;
-            transition: color 0.3s;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
         }
 
-        nav ul li a:hover {
-            color: var(--cor-secundaria);
-            border-bottom: 2px solid var(--cor-secundaria);
+        nav ul li a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background-color: var(--cor-ouro); transition: 0.4s;
         }
+        nav ul li a:hover::after { width: 100%; }
+        nav ul li a:hover { color: var(--cor-ouro); }
 
-        .content-section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem 5%;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--cor-primaria);
-            font-size: 3rem;
+        /* --- HERO --- */
+        .hero-section {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 3px solid var(--cor-destaque);
-            padding-bottom: 0.5rem;
+            position: relative;
+            padding: 0 20px;
         }
 
-        h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--cor-secundaria);
-            font-size: 1.8rem;
-            margin-top: 2rem;
+        .hero-section h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            background: linear-gradient(to bottom, #fff, #ffecb3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: white;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.9);
             margin-bottom: 1rem;
         }
 
-        .section-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            text-align: justify;
+        .hero-section p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--cor-ouro);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: rgba(0,0,0,0.6);
+            padding: 5px 15px;
+            border-radius: 2px;
         }
 
-        .section-text strong, b {
-            color: var(--cor-primaria);
-            font-weight: 700;
+        /* --- CONTEÚDO --- */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
-        .key-points {
-            list-style-type: none;
-            padding-left: 0;
+        .scientific-card {
+            background: var(--vidro-fundo);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--borda-vidro);
+            padding: 3.5rem;
+            margin-bottom: 5rem;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .scientific-card:hover {
+            border-color: rgba(255, 193, 7, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .scientific-card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--cor-ouro);
             margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+            padding-bottom: 1rem;
+            display: inline-block;
         }
 
-        .key-points li {
-            background: #e9f5ff;
-            margin-bottom: 8px;
-            padding: 10px 15px;
-            border-left: 4px solid var(--cor-secundaria);
+        .scientific-card p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #d1d1d1;
+        }
+
+        .scientific-card strong { color: #fff; }
+
+        /* Destaque Visual (Imagem com Legenda) */
+        .visual-feature {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .visual-feature img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            transition: transform 0.5s;
+        }
+
+        .visual-feature img:hover { transform: scale(1.01); }
+
+        .caption {
+            display: block;
+            text-align: right;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--cor-ouro);
+            margin-top: 0.5rem;
             font-size: 1rem;
         }
 
-        .image-container {
-            text-align: center;
-            margin: 2rem 0;
+        /* Grid de Classes */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
         }
 
-        .image-container img {
-            width: 70%; /* Reduzido de 100% para 70% */
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+        .class-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--cor-ouro);
+            padding: 2rem;
+            transition: 0.3s;
         }
 
-        .image-container img:hover {
-            transform: scale(1.03);
+        .class-item:hover {
+            background: rgba(255, 193, 7, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .back-link {
-            text-align: center;
-            margin: 4rem 0;
+        .class-item h4 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .class-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: #bbb;
         }
 
-        .back-link a {
-            color: var(--cor-primaria);
-            text-decoration: none;
-            font-weight: 700;
-            padding: 10px 20px;
-            border: 2px solid var(--cor-primaria);
-            border-radius: 50px;
-            transition: background-color 0.3s, color 0.3s;
+        /* Botão Voltar */
+        .btn-return {
+            display: inline-block; margin-top: 3rem; padding: 15px 40px;
+            border: 1px solid var(--cor-ouro); color: var(--cor-ouro);
+            text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold;
+            transition: 0.4s; background: transparent; letter-spacing: 2px;
         }
-
-        .back-link a:hover {
-            background-color: var(--cor-primaria);
-            color: white;
+        
+        .btn-return:hover {
+            background: var(--cor-ouro); color: #050200;
+            box-shadow: 0 0 25px rgba(255, 193, 7, 0.6);
         }
 
         footer {
-            background-color: var(--cor-texto);
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            font-size: 0.9rem;
-            margin-top: 3rem;
+            text-align: center; padding: 3rem;
+            background: #000; color: #666;
+            border-top: 1px solid #222; font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 3rem; }
+            .scientific-card { padding: 2rem; }
+            .classes-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-image"></div>
+    <div class="particles"></div>
+    <div class="spotlight"></div>
+
     <header>
         <div class="logo">
-            <h2>Doctor Christian and Nicolas</h2>
+            <h2>Dr. Christian & Nicolas</h2>
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="vertebrados.html">Vertebrados</a></li>
                 <li><a href="invertebrados.html">Invertebrados</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="content-section">
-        <center>
-            <h1>Vertebrados: A Conquista da Estrutura Axial</h1>
-        </center>
-        
-        <div class="section-text">
-            <p>Os <b>Vertebrados</b> (Subfilo Vertebrata) representam o grupo animal mais complexo e evolutivamente avançado, compreendendo cerca de 69.000 espécies. Eles são definidos pela presença de uma <b>coluna vertebral</b> (formada por vértebras) e um <b>crânio</b>, estruturas que protegem o sistema nervoso central. Esta característica permitiu a evolução de organismos de grande porte e com sofisticadas capacidades sensoriais e motoras.</p>
-            
-            <p>A evolução do endosqueleto ósseo ou cartilaginoso permitiu que os vertebrados crescessem continuamente e desenvolvessem eficientes estratégias de locomoção e predação, o que os levou a dominar ambientes terrestres, aquáticos e aéreos. O grupo inclui classes essenciais como Peixes, Anfíbios, Répteis, Aves e Mamíferos.</p>
-            
-            <h3>Características Biológicas Fundamentais</h3>
-            <hr>
-            
-            <ul class="key-points">
-                <li><b>Endosqueleto Interno:</b> Esqueleto de suporte que cresce com o organismo, em oposição ao exoesqueleto dos Artrópodes.</li>
-                <li><b>Sistema Nervoso Avançado:</b> Cérebro altamente desenvolvido, protegido pelo crânio, e medula espinhal protegida pela coluna vertebral.</li>
-                <li><b>Sistema Circulatório Fechado:</b> O sangue circula inteiramente dentro de vasos, garantindo transporte eficiente de oxigênio e nutrientes.</li>
-                <li><b>Simetria Bilateral:</b> Corpo bem definido com duas metades espelhadas.</li>
-            </ul>
-
-            <h3>As Cinco Classes Clássicas</h3>
-            <hr>
-
-            <h4>1. Peixes (Pisces)</h4>
-            <p>O grupo mais diverso de vertebrados. Caracterizados pela respiração <b>branquial</b>, corpo coberto por escamas (na maioria) e utilização de <b>nadadeiras</b> para locomoção. O estudo dos peixes é fundamental para a compreensão da origem da coluna vertebral.</p>
-
-            <div class="image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Coral_reef_fish.jpg" alt="Peixes - Vertebrados aquáticos com respiração branquial">
-                <p style="font-style: italic; margin-top: 10px;">Diversidade de Peixes: respiram por brânquias e vivem em ambientes aquáticos.</p>
-            </div>
-
-            <h4>2. Anfíbios (Amphibia)</h4>
-            <p>Animais de vida dupla (aquática e terrestre). Passam por metamorfose, com larvas aquáticas (girinos) e adultos terrestres. Sua pele permeável os torna altamente sensíveis às mudanças ambientais e são indicadores da saúde ecológica.</p>
-
-            <div class="image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/European_tree_frog_%28Hyla_arborea%29_cropped.jpg" alt="Anfíbio - Rã arborícola">
-                <p style="font-style: italic; margin-top: 10px;">Anfíbio: Rã arborícola, exemplo clássico de vida dupla (aquática e terrestre).</p>
-            </div>
-
-            <h4>3. Répteis (Reptilia) e Aves (Aves)</h4>
-            <p>Os Répteis (cobras, lagartos, tartarugas) foram os primeiros a conquistar definitivamente o ambiente terrestre, graças ao seu <b>ovo amniótico</b> e pele queratinizada. As <b>Aves</b> são os únicos animais com <b>penas</b>, caracterizadas pela endotermia (sangue quente) e ossos pneumáticos (ocos) que facilitam o voo.</p>
-
-            <div class="image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/American_robin.jpg" alt="Ave - Pássaro robin americano">
-                <p style="font-style: italic; margin-top: 10px;">Exemplo de Aves: Robin americano, símbolo da evolução do voo.</p>
-            </div>
-            
-            <h4>4. Mamíferos (Mammalia)</h4>
-            <p>O grupo que inclui os seres humanos. Caracterizado pela presença de <b>glândulas mamárias</b> (para alimentar os filhotes), <b>pelos</b> ou <b>cabelos</b> e, na maioria, pela endotermia. Possuem o cérebro mais complexo e estruturas sociais avançadas.</p>
-            
-            <div class="image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/African_Bush_Elephant.jpg" alt="Mamífero - Elefante africano">
-                <p style="font-style: italic; margin-top: 10px;">Exemplo de Mamífero: Elefante africano (Classe Mammalia).</p>
-            </div>
-
-            <h3>A Coluna Vertebral: A Chave da Predação</h3>
-            <hr>
-            <p>O desenvolvimento da coluna vertebral forneceu um ponto de apoio muscular robusto, essencial para o desenvolvimento de movimentos potentes e rápidos, tornando os Vertebrados os principais predadores em muitos ecossistemas. A sua biologia complexa e estratégias de reprodução garantiram a sua adaptação a quase todos os ambientes extremos do planeta.</p>
-
-        </div>
-
-        <div class="back-link">
-            <a href="index.html">⬅️ Voltar à Página Principal</a>
-        </div>
+    <section class="hero-section">
+        <h1>Subfilo Vertebrata</h1>
+        <p>A Arquitetura da Dominância Biológica</p>
     </section>
 
+    <div class="main-container">
+        
+        <div class="scientific-card">
+            <h2>A Revolução Axial</h2>
+            <p>Os <strong>Vertebrados</strong> constituem o subfilo mais complexo dos cordados (Chordata). A sua distinção fundamental não reside apenas no tamanho, mas na inovação arquitetônica do <strong>endoesqueleto</strong>. Ao contrário dos artrópodes, que são limitados pelo peso de suas armaduras externas, os vertebrados desenvolveram uma estrutura de suporte interna viva (óssea ou cartilaginosa) que cresce com o animal.</p>
+            <p>O elemento central é a <strong>Coluna Vertebral</strong>, uma estrutura segmentada que substitui a notocorda embrionária, oferecendo proteção mecânica robusta para a medula espinhal. Juntamente com o <strong>Crânio</strong> (daí o termo alternativo <em>Craniata</em>), que encapsula um cérebro altamente vascularizado e complexo, esta configuração permitiu o desenvolvimento de órgãos sensoriais cefálicos avançados (olhos formadores de imagem, ouvidos complexos, receptores olfativos).</p>
+            
+            
+
+[Image of vertebrate skeletal system diagram]
+
+            
+            <div class="visual-feature">
+                <img src="https://images.unsplash.com/photo-1564349683136-772650119139?q=80&w=1200&auto=format&fit=crop" alt="Esqueleto de Tigre - Estrutura Vertebrada">
+                <span class="caption">Fig 1. A biomecânica predatória possibilitada pela coluna vertebral flexível e membros articulados.</span>
+            </div>
+        </div>
+
+        <div class="scientific-card">
+            <h2>Fisiologia de Alta Performance</h2>
+            <p>A conquista de quase todos os nichos ecológicos da Terra pelos vertebrados deve-se a sistemas fisiológicos integrados de alta eficiência:</p>
+            <ul>
+                <li style="margin-bottom:15px;"><strong>Sistema Circulatório Fechado:</strong> Um coração multi-câmara (de 2 a 4 câmaras) bombeia sangue contendo hemoglobina dentro de vasos, garantindo oxigenação rápida para tecidos metabolicamente ativos.</li>
+                <li style="margin-bottom:15px;"><strong>Sistema Imunológico Adaptativo:</strong> Capacidade única de "aprender" e memorizar patógenos através de linfócitos, conferindo imunidade a longo prazo.</li>
+                <li><strong>Regulação Térmica:</strong> A evolução da <em>Endotermia</em> (em Aves e Mamíferos) permitiu atividade constante independente da temperatura ambiente, ao custo de uma alta demanda energética.</li>
+            </ul>
+        </div>
+
+        <div class="scientific-card">
+            <h2>Taxonomia: As Grandes Classes</h2>
+            <p>A diversificação evolutiva dos vertebrados pode ser categorizada em cinco grupos clássicos, cada um representando um salto adaptativo:</p>
+            
+            <div class="classes-grid">
+                <div class="class-item">
+                    <h4>I. Pisces (Peixes)</h4>
+                    <p>Os pioneiros. Dominam o ambiente aquático com respiração branquial. Inclui desde os tubarões (cartilaginosos) até os peixes ósseos modernos.</p>
+                </div>
+                <div class="class-item">
+                    <h4>II. Amphibia (Anfíbios)</h4>
+                    <p>A ponte entre a água e a terra. Dependentes de ambientes úmidos para a reprodução e respiração cutânea. Ex: Rãs, Salamandras.</p>
+                </div>
+                <div class="class-item">
+                    <h4>III. Reptilia (Répteis)</h4>
+                    <p>A conquista definitiva da terra. O desenvolvimento do <strong>Ovo Amniótico</strong> e pele queratinizada permitiu a independência da água.</p>
+                </div>
+                <div class="class-item">
+                    <h4>IV. Aves</h4>
+                    <p>Dinossauros terópodes modernos. Caracterizados por penas, ossos pneumáticos e metabolismo endotérmico voltado para o voo.</p>
+                </div>
+                <div class="class-item">
+                    <h4>V. Mammalia (Mamíferos)</h4>
+                    <p>O ápice do cuidado parental. Definidos por glândulas mamárias, pelos e o neocórtex cerebral. Inclui o ser humano.</p>
+                </div>
+            </div>
+            
+            
+
+[Image of amniotic egg structure diagram]
+
+
+        </div>
+
+        <center>
+            <a href="index.html" class="btn-return">← RETORNAR À BASE DE DADOS</a>
+        </center>
+
+    </div>
+
     <footer>
-        <p>&copy; 2025 Doctor Christian and Nicolas | Zoologia Moderna</p>
+        <p>&copy; 2025 Doctor Christian and Nicolas | Zoologia Evolutiva Avançada</p>
     </footer>
+
+    <script>
+        // Script de iluminação (Spotlight)
+        document.addEventListener('mousemove', (e) => {
+            requestAnimationFrame(() => {
+                const x = e.clientX;
+                const y = e.clientY;
+                document.documentElement.style.setProperty('--mouse-x', x + 'px');
+                document.documentElement.style.setProperty('--mouse-y', y + 'px');
+            });
+        });
+    </script>
 
 </body>
 </html>
